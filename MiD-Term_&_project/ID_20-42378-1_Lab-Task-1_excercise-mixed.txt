@@ -1,0 +1,18 @@
+Name: Md. Ali Ahnaf
+ID: 20-42378-1
+1. select emp.* from emp, dept where sal=(select max(sal) from emp where sal in ( select sal from emp,dept,salgrade where emp.deptno=dept.deptno and emp.sal between salgrade.losal and salgrade.hisal and grade in (2,3) and dname = 'SALES')) and dname='SALES'
+2. select grade, count(*) from emp, salgrade where sal between losal and hisal group by grade having count(*)  = (select max(count(*)) from emp, salgrade where sal between losal and hisal group by grade)
+3. select ename, job, sal, grade from emp, salgrade where sal between losal and hisal and deptno = (select deptno from emp group by deptno having avg(sal) = (select max(avg(sal)) from emp group by deptno))
+4. select dname, loc, count(*), round(avg(sal)) from emp, dept where emp.deptno = dept.deptno group by dname,loc
+5. select loc from dept where deptno = (select deptno from emp group by deptno having avg(sal) = (select max(avg(sal)) from emp group by deptno))
+6. select * from emp where sal in (select sal from salgrade, emp where salgrade.grade in (2,3) and emp.sal between salgrade.losal and salgrade.hisal) and deptno = (select deptno from dept where loc='CHICAGO')
+7. select ename, job,sal, dname, grade from emp,dept,salgrade where emp.deptno = dept.deptno and sal between losal and hisal and loc = (select loc from dept, emp where emp.deptno = dept.deptno group by loc having count(*) = (select max(count(*)) from emp,dept where emp.deptno = dept.deptno group by loc))
+8. select ename, job, sal*12 as anualSalary, dept.deptno, dname, grade from emp, dept, salgrade where emp.deptno = dept.deptno and sal between losal and hisal and (sal*12 > 36000 or job != 'CLERK')
+9. select emp.*, grade from emp, salgrade where emp.sal between losal and hisal and empno in (select mgr from emp)
+10. select * from emp where deptno in (select deptno from dept where loc='DALLAS') and EMPNO in ( select MGR from emp where sal in (select sal from salgrade, emp where salgrade.grade in (3,4) and emp.sal between salgrade.losal and salgrade.hisal))
+11. select emp.* from emp, salgrade where sal between losal and hisal and grade = (select grade from emp, salgrade where sal between losal and hisal group by grade having count(*)  = (select max(count(*)) from emp, salgrade where sal between losal and hisal group by grade)) and deptno = (select deptno from dept where dname='SALES')
+12. select emp.* from emp, dept where emp.deptno = dept.deptno and sal = (select max(sal) from emp, dept where emp.deptno = dept.deptno and loc='CHICAGO' and hiredate < (select max(hiredate) from emp,salgrade where sal between losal and hisal and grade = 2))
+13. update emp set sal=(sal+(sal*0.07)) where sal in (select sal from emp, salgrade where sal between losal and hisal and grade = 2)
+14. UPDATE DEPT SET loc = 'Washington' WHERE loc = 'CHICAGO'
+15. delete from emp where hiredate = (select min(hiredate) from emp)
+16. DELETE FROM emp WHERE sal = (select max(sal) from emp, dept where emp.deptno = dept.deptno and dept.deptno = (select deptno from dept where dname = 'SALES'))

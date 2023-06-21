@@ -1,0 +1,17 @@
+1. SELECT e.empno, e.ename, e.job, e.sal, s.grade, d.dname FROM emp e JOIN dept d ON e.deptno = d.deptno JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal WHERE e.job = 'CLERK';
+
+2. SELECT e.empno, e.ename, e.job, e.sal, s.grade FROM emp e JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal WHERE e.sal = (SELECT MAX(sal)  FROM emp  WHERE sal < (SELECT MAX(sal) FROM emp));
+
+3. SELECT e.empno, e.ename, e.job, e.sal, s.grade, d.dname FROM emp e JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal JOIN dept d ON e.deptno = d.deptno WHERE e.job = 'MGR' AND s.grade = AND e.deptno IN (10, 20);
+
+4. SELECT e.ENAME, e.SAL, sg.GRADE FROM EMP e JOIN SALGRADE sg ON e.SAL BETWEEN sg.LOSAL AND sg.HISAL WHERE e.JOB = 'ANALYST' AND sg.GRADE IN (2, 3) ORDER BY e.SAL DESC;
+
+5. SELECT d.dname FROM dept d JOIN emp e ON d.deptno = e.deptno WHERE e.hiredate = (SELECT MAX(hiredate) FROM emp)
+
+7. select s.grade FROM emp e join salgrade s on e.sal between s.losal and s.hisal WHERE e.job = 'SALESMAN' GROUP BY s.grade; 
+
+8. SELECT e.ENAME, e.SAL, d.DNAME, s.GRADE FROM EMP e JOIN DEPT d ON e.DEPTNO = d.DEPTNO JOIN SALGRADE s ON e.SAL BETWEEN s.LOSAL AND s.HISAL WHERE e.JOB = 'SALESMAN' AND s.GRADE IN (2, 3) AND d.LOC IN ('CHICAGO', 'DALLAS');
+
+9. SELECT s.grade FROM emp e join salgrade s on e.sal between s.losal and s.hisal WHERE e.job = 'MANAGER';
+
+11.SELECT E.ENAME, E.JOB, E.SAL, S.GRADE, D.LOC FROM EMP E JOIN DEPT D ON E.DEPTNO = D.DEPTNO JOIN SALGRADE S ON E.SAL BETWEEN S.LOSAL AND S.HISAL JOIN EMP M ON E.MGR = M.EMPNO AND M.JOB = 'MANAGER' JOIN DEPT MD ON M.DEPTNO = MD.DEPTNO JOIN SALGRADE SG ON M.SAL BETWEEN SG.LOSAL AND SG.HISAL WHERE E.JOB = 'SALESMAN' AND D.LOC = (SELECT LOC FROM EMP EM JOIN DEPT DP ON EM.DEPTNO = DP.DEPTNO WHERE EM.ENAME = 'MILLER') AND S.GRADE = (SELECT SG.GRADE FROM EMP EC JOIN SALGRADE SG ON EC.SAL BETWEEN SG.LOSAL AND SG.HISAL WHERE EC.ENAME = 'CLARK') AND (MD.DEPTNO = 10 OR MD.DEPTNO = 20);

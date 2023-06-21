@@ -1,0 +1,183 @@
+CREATE sequence seq_user_id increment by 1 start with 1 nocache nocycle;
+
+CREATE TABLE user_data (
+  Id number(10) PRIMARY KEY NOT NULL,
+  Name clob NOT NULL,
+  Email varchar2(100) UNIQUE NOT NULL,
+  Username varchar2(100) NOT NULL,
+  Password varchar2(100) NOT NULL,
+  Gender varchar2(100) NOT NULL,
+  Dob date NOT NULL,
+  Phone varchar2(100) NOT NULL,
+  Preadd varchar2(100) NOT NULL,
+  Religion varchar2(100) NOT NULL
+) ;
+
+INSERT INTO user_data(Id, Name, Email, Username, Password, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(1, 'Md Ali Ahnaf', 'aliahnaf2012@gmail.com', 'Ahnaf', '1Wertyui@', 'Male', to_date('22-2-1999','dd-mm-yyyy'), '01775752822', 'NHA-11, DOYEL TOWER, Flat C-6, LALMATIA', 'Islam');
+
+INSERT INTO user_data(Id, Name, Email, Username, Password, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_user_id.NEXTVAL, 'GEGE', 'gege@gmail.com', 'gg', '1Wertyui@_', 'Other', to_date('19-7-2001','dd-mm-yyyy'), '01775752811', 'Neptune', 'Islam'); 
+
+INSERT INTO user_data(Id, Name, Email, Username, Password, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_user_id.NEXTVAL, 'Protik Acharjay', 'protik@gmail.com', 'Protik', 'pro', 'Male', to_date('11-12-2001','dd-mm-yyyy'), '01798141488', 'Rajshahi', 'Sanatan'); 
+
+INSERT INTO user_data(Id, Name, Email, Username, Password, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_user_id.NEXTVAL, 'Kingshuk', 'king@gmail.com', 'king', '1Wertyui@_', 'Male', to_date('19-7-2001','dd-mm-yyyy'), '01775752811', 'Dhaka', 'Islam'); 
+
+INSERT INTO user_data(Id, Name, Email, Username, Password, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_user_id.NEXTVAL, 'Mishkat', 'mish@gmail.com', 'mish', '1Wertyui@_', 'Male', to_date('1-7-2001','dd-mm-yyyy'), '01879845456', 'Kuril', 'Islam'); 
+
+
+select * from user_data 
+
+/* drop table user_data */
+
+##################################################################################################################################################################################################################################################################################
+
+CREATE sequence seq_admin_id increment by 1 start with 1 nocache nocycle;
+
+CREATE TABLE user_admin_data (
+  Admin_Id number(10) PRIMARY KEY NOT NULL,
+  Name clob NOT NULL,
+  Email varchar2(100) UNIQUE NOT NULL,
+  Adminname varchar2(100) NOT NULL,
+  Adminpassword varchar2(100) NOT NULL,
+  Gender varchar2(100) NOT NULL,
+  Dob date NOT NULL,
+  Phone varchar2(100) NOT NULL,
+  Preadd varchar2(100) NOT NULL,
+  Religion varchar2(100) NOT NULL
+) ;
+
+INSERT INTO user_admin_data (Admin_Id, Name, Email, Adminname, Adminpassword, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(1, 'Md Ali Ahnaf', 'aliahnaf2012@gmail.com', 'Ahnaf', 'admin', 'Male', to_date('22-2-1999','dd-mm-yyyy'), '01775752822', 'NHA-11, DOYEL TOWER, Flat C-6, LALMATIA', 'Islam');
+
+INSERT INTO user_admin_data (Admin_Id, Name, Email, Adminname, Adminpassword, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_admin_id.NEXTVAL, 'Admin1', 'admin@gmail.com', 'admin', 'admin123', 'Other', to_date('19-7-2001','dd-mm-yyyy'), '01775752811', 'Neptune', 'Islam'); 
+
+INSERT INTO user_admin_data (Admin_Id, Name, Email, Adminname, Adminpassword, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_admin_id.NEXTVAL, 'Protik Acharjay', 'protikadmin@gmail.com', 'Protikad', 'pro', 'Male', to_date('11-12-2001','dd-mm-yyyy'), '01798141488', 'Rajshahi', 'Sanatan'); 
+
+INSERT INTO user_admin_data (Admin_Id, Name, Email, Adminname, Adminpassword, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_admin_id.NEXTVAL, 'Kingshukad', 'kingad@gmail.com', 'kingad', '1Wertyui@_', 'Male', to_date('19-7-2001','dd-mm-yyyy'), '01775752811', 'Dhaka', 'Islam'); 
+
+INSERT INTO user_admin_data (Admin_Id, Name, Email, Adminname, Adminpassword, Gender, Dob, Phone, Preadd, Religion)
+ VALUES(seq_admin_id.NEXTVAL, 'Mishkatad', 'mishad@gmail.com', 'mishad', '1Wertyui@_', 'Male', to_date('1-7-2001','dd-mm-yyyy'), '01879845456', 'Kuril', 'Islam'); 
+
+
+select * from user_admin_data 
+
+/* drop table user_data */
+
+######################################################################################################################################
+
+CREATE sequence seq_order_id increment by 1 start with 1 nocache nocycle;
+CREATE TABLE user_orders (
+  Order_Id number(10) PRIMARY KEY NOT NULL,
+  Id varchar2(100) UNIQUE NOT NULL,
+  Item_Name varchar2(100) NOT NULL,
+  Price varchar2(100) NOT NULL,
+  Quantity varchar2(100) NOT NULL,
+  Pay_method varchar2(100) NOT NULL,
+  Product_total varchar2(100) NOT NULL
+);
+
+
+INSERT INTO user_orders (Order_Id, Id, Item_Name, Price, Quantity, Pay_method, Product_total)
+VALUES (1, 'ABC123', 'Product A', '100', '2', 'Bkash', '25');
+INSERT INTO user_orders (Order_Id, Id, Item_Name, Price, Quantity, Pay_method, Product_total)
+VALUES (seq_order_id.NEXTVAL, 'DEF456', 'Product B', '5.99', '4', 'Cash on Delivery', '23.96');
+
+INSERT INTO user_orders (Order_Id, Id, Item_Name, Price, Quantity, Pay_method, Product_total)
+VALUES (seq_order_id.NEXTVAL, 'GHI789', 'Product C', '2.99', '10', 'Cash on Delivery', '29.90');
+
+
+INSERT INTO user_orders (Order_Id, Id, Item_Name, Price, Quantity, Pay_method, Product_total)
+VALUES (seq_order_id.NEXTVAL, 'JKL012', 'Product D', '12.50', '1', 'Credit Card', '12.50');
+
+INSERT INTO user_orders (Order_Id, Id, Item_Name, Price, Quantity, Pay_method, Product_total)
+VALUES (seq_order_id.NEXTVAL, 'MNO345', 'Product E', '8.75', '3', 'Bkash', '26.25');
+
+select * from user_orders 
+
+###########################################################################################################################
+
+CREATE TABLE comments_section (
+  Idc NUMBER(10) NOT NULL,
+  Namec VARCHAR2(100) NOT NULL,
+  Emailc VARCHAR2(100) NOT NULL,
+  Commentz VARCHAR2(255) NOT NULL
+);
+select * from comments_section 
+
+INSERT INTO comments_section (Idc, Namec, Emailc, Commentz) 
+VALUES (1, 'Life is a MEME', 'memeislife@outlook.com', 'Meme is everything. I am pretty good at razer products meme. Send me free products :'' cause I am ');
+
+
+INSERT INTO comments_section (Idc, Namec, Emailc, Commentz) VALUES
+(2, 'Unknown Warrior', 'lifeisunknown@outlook.com', 'I am from the Unknown by the Unknown :3 Your products are authentic and pretty fast delivery I got.');
+
+INSERT INTO comments_section (Idc, Namec, Emailc, Commentz) VALUES
+(3, 'Sad Warrior', 'lifeissad@outlook.com', 'I am sad and known by all :3 Your products are authentic btw I am a bit sad cause I didn''t get any discounts :/');
+
+INSERT INTO comments_section (Idc, Namec, Emailc, Commentz) VALUES
+(4, 'Tech Geek', 'geektech@outlook.com', 'I am a tech seeker, When I opened the product At Glance I knew they were authentic.');
+
+INSERT INTO comments_section (Idc, Namec, Emailc, Commentz) VALUES
+(5, 'Sad Geek', 'sadgeek@outlook.com', 'I am a tech seeker, when I opened the product at Glance I knew they were authentic.');
+
+#################################################################################################################
+
+
+CREATE TABLE Staff (
+  staff_id NUMBER(10) PRIMARY KEY NOT NULL,
+  admin_id NUMBER(10) NOT NULL,
+  name VARCHAR2(100) NOT NULL,
+  email VARCHAR2(100) UNIQUE NOT NULL,
+  password VARCHAR2(100) NOT NULL
+);
+INSERT INTO Staff (staff_id, admin_id, name, email, password)
+VALUES (1, 1, 'John', 'john@gmail.com', 'mypassword123');
+
+INSERT INTO Staff (staff_id, admin_id, name, email, password)
+VALUES (2, 2, 'Smith', 'smith@gmail.com', 'mysecretpass');
+
+INSERT INTO Staff (staff_id, admin_id, name, email, password)
+VALUES (3, 1, 'Johnson', 'jonson@gmail.com', 'password123');
+
+INSERT INTO Staff (staff_id, admin_id, name, email, password)
+VALUES (4, 3, 'Mary', 'mary@gmail.com', 'mysecurepassword');
+
+INSERT INTO Staff (staff_id, admin_id, name, email, password)
+VALUES (5, 2, 'Tom', 'tom@gmail.com', 'password456');
+
+select * from Staff 
+
+################################################################################################################
+
+CREATE TABLE Warehouse (
+  item_id NUMBER(10) PRIMARY KEY NOT NULL,
+  item_name VARCHAR2(100) NOT NULL,
+  price NUMBER(10,2) NOT NULL,
+  quantity NUMBER(10) NOT NULL,
+  staff_id NUMBER(10) NOT NULL
+);
+
+INSERT INTO Warehouse (item_id, item_name, price, quantity, staff_id)
+VALUES (1, 'Razer Keyboard', 99.99, 10, 1);
+
+INSERT INTO Warehouse (item_id, item_name, price, quantity, staff_id)
+VALUES (2, 'Razer Mouse', 49.99, 20, 2);
+
+INSERT INTO Warehouse (item_id, item_name, price, quantity, staff_id)
+VALUES (3, 'Razer Headset', 149.99, 5, 3);
+
+INSERT INTO Warehouse (item_id, item_name, price, quantity, staff_id)
+VALUES (4, 'Razer Gaming Chair', 199.99, 3, 4);
+
+INSERT INTO Warehouse (item_id, item_name, price, quantity, staff_id)
+VALUES (5, 'Razer Mousepad', 29.99, 30, 1);
+
+SELECT * FROM Warehouse
+

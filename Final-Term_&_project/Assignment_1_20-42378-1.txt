@@ -1,0 +1,47 @@
+Name: MD. ALI AHNAF 
+ID:20-42378-1
+----------------------------------------------------------------------
+1.create or replace trigger salary_change_monitoring 
+before update or delete or insert on emp 
+for each row 
+declare 
+exp number; 
+begin 
+exp:=(sysdate-:old.hiredate)/365; 
+if 
+exp<100 and :new.sal>(:old.sal+(:old.sal*.20)) 
+then 
+raise_application_error(-20201,'errorSal'); 
+end if; 
+end;
+
+2.create or replace trigger qty_on_hnd 
+before update or insert on product_master 
+for each row 
+begin 
+if :new.qty <0 
+then 
+raise_application_error(-20202,'negQOH'); 
+end if; 
+end;
+
+3.create or replace trigger bookself_op 
+before update or insert on bookself 
+for each row 
+begin 
+insert into bookself_audit values(:new.Title,:new.publisher,:new.rating,:new.rating,sysdate); 
+end;
+
+4.create or replace trigger LAB7_RES_TRG 
+before 
+insert on LAB7_RESERVATIONS 
+begin 
+select count(*) into c where flight_id=:new.flight_id; 
+select Seats into s where flight_id=:new.flight_id; 
+if c<0 then 
+raise_application_error(-20208,'Invalid flight id'); 
+end if; 
+if c>0 and s=0 then 
+raise_application_error(-20208,CONCAT('Flight ',new.flight_id,' has no seats left')); 
+end if; 
+end;

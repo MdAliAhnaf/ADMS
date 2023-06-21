@@ -1,0 +1,15 @@
+1) select distinct customer.customer_name, customer_city from borrower, customer where borrower.customer_name = customer.customer_name;
+2) select distinct C.customer_name, customer_city from customer C, borrower B, loan L where C.customer_name = B.customer_name and B.loan_number = L.loan_number and branch_name = 'Perryridge';
+3) select distinct D.customer_name from depositor D, account A where D.account_number = A.account_number and branch_name in (select branch_name from depositor Dh, account Ah where Dh.account_number = Ah.account_number and D.customer_name = 'Hayes');
+4) select distinct T.branch_name from branch T, branch S where T.assets > S.assets and S.branch_city = 'Brooklyn';
+5) select branch_name, avg(balance) from account group by branch_name having avg(balance) > 700;
+6) select branch_name from account group by branch_name having avg(balance) >= all(select avg(balance) from account group by branch_name);
+7) SELECT borrower.Customer_name, loan.Branch_name FROM borrower, loan WHERE borrower.Loan_number = loan.Loan_number;
+8) SELECT Customer_name FROM loan, branch WHERE loan.Branch_name = branch.Branch_name AND branch.Branch_city = "downtown";
+9) SELECT customer.Customer_name FROM customer, loan WHERE customer.Customer_name = loan.Customer_name AND loan.Branch_name = (SELECT Branch_name FROM loan, customer WHERE loan.Customer_name = customer.Customer_name AND customer.Customer_name = "jonshon");
+10) SELECT COUNT(*) AS Number_of_borrower, Bruch_name FROM borrower, loan WHERE borrower.Loan_number = loan.Loan_number GROUP BY Bruch_name;
+11) SELECT customer.Customer_name FROM customer, loan WHERE customer.Customer_name = loan.Customer_name AND loan.Ammount = (SELECT MAX(Ammount) FROM loan);
+12) SELECT customer.Customer_name, customer.Customer_city, loan.Ammount FROM customer, loan WHERE customer.Customer_name = loan.Customer_name;
+13) SELECT AVG(Balance) FROM account, customer WHERE account.Bruch_name = customer.Customer_name AND customer.Customer_city = "Harrison" GROUP BY customer.Customer_name HAVING COUNT(*) >= 2;
+
+
