@@ -1,7 +1,7 @@
 Advance Database Management System - Lab Quiz
 
-Name: Shadril Hassan Shifat
-ID: 20-42451-1
+Name: MD. ALI AHNAF 
+ID: 20-42378-1
 Sec: C
 
 ****************************************************************************************************************

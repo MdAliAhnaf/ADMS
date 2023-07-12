@@ -1,6 +1,5 @@
 ADMS[C]
-1. Shadril Hassan Shifat (20-42451-1)
-2. Anika Saba Ibte Sum (20-43242-1)
+MD. ALI AHNAF (20-42378-1)
 ----------------------------------------------------------------------------
 
 create package user_dml
